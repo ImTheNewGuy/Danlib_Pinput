@@ -1,0 +1,85 @@
+procedure MoveMouse(X, Y: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.MoveMouse(X, Y)
+	else
+		inherited;	
+end;
+
+procedure GetMousePos(var X, Y: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.GetMousePos(X, Y)
+	else
+		inherited;	
+end;
+
+procedure ClickMouse(X, Y: Integer; ClickType: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.ClickMouse(X, Y, ClickType)
+	else
+		inherited;	
+end;
+
+procedure HoldMouse(X, Y: Integer; ClickType: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.HoldMouse(X, Y, ClickType)
+	else
+		inherited;	
+end;
+
+procedure ReleaseMouse(X, Y: Integer; ClickType: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.ReleaseMouse(X, Y, ClickType)
+	else
+		inherited;
+end;
+
+function IsMouseButtonDown(ClickType: Integer): Boolean; override;
+begin
+	if PInput.OverrideSimba then
+		Result := PInput.IsMouseButtonDown(ClickType)
+	else
+		inherited;
+end;        
+
+procedure ScrollMouse(X, Y: Integer; Up: Integer); override;
+begin
+	if PInput.OverrideSimba then
+		PInput.ScrollMouse(X, Y, Up)
+	else
+		inherited;
+end;
+
+Procedure missMouse(Pnt: TPoint; ranX, ranY: Integer); override;
+var
+  X,Y: integer;
+begin
+  if PInput.OverrideSimba then
+  begin
+    X := randomRange(Pnt.X-ranX, Pnt.X+ranX);
+    Y := randomRange(Pnt.Y-ranY, Pnt.Y+ranY);
+    wait(randomrange(75, 175));
+		PInput.MoveMouse(X, Y);
+	end else
+		inherited;
+end;
+
+Procedure humanMMouse(Pnt: TPoint; ranX, ranY: Integer); override;
+var
+  X,Y: integer;
+begin
+  if PInput.OverrideSimba then
+  begin
+    X := randomRange(Pnt.X-ranX, Pnt.X+ranX);
+    Y := randomRange(Pnt.Y-ranY, Pnt.Y+ranY);
+    wait(randomrange(75, 175));
+		PInput.MoveMouse(X, Y);
+	end else
+		inherited;
+end;
+
+
